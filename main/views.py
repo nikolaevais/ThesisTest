@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from main.models import Doctor
 
@@ -13,4 +13,8 @@ def contact(request):
 
 
 class DoctorListView(ListView):
+    model = Doctor
+
+
+class DoctorDetailView(DetailView):
     model = Doctor

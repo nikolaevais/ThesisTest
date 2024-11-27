@@ -12,6 +12,7 @@ class Doctor(models.Model):
     experience = models.IntegerField(verbose_name="Стаж работы")
     education = models.TextField(verbose_name="Образование")
     avatar = models.ImageField(upload_to="main/doctor/avatar/", verbose_name="Аватар", **NULLABLE)
+    job_title = models.CharField(max_length=100, verbose_name="Должность")
 
     class Meta:
         verbose_name = "Доктор"
