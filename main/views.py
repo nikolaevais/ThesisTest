@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+
+from main.models import Doctor
 
 
 def index(request):
@@ -7,3 +10,7 @@ def index(request):
 
 def contact(request):
     return render(request, 'main/contact.html')
+
+
+class DoctorListView(ListView):
+    model = Doctor
