@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="container py-4">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% for services in object_list %}
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <img src="{{ services.photo | media_filter }}" class="rounded-circle float-left" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title pricing-card-title">{{ services.title }}</h3>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>{{ services.description|truncatechars:100 }}</li>
+                        <p class="fw-bold">{{ services.price }} ₽</p>
+                    </ul>
+                    <a class="btn btn-sm btn-outline-secondary"
+                       href="{% url 'main:services_detail' services.pk %}" role="button">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from main.models import Doctor
+from main.models import Doctor, Services
 
 
 def index(request):
@@ -18,3 +18,11 @@ class DoctorListView(ListView):
 
 class DoctorDetailView(DetailView):
     model = Doctor
+
+
+class ServicesListView(ListView):
+    model = Services
+
+
+class ServicesDetailView(DetailView):
+    model = Services
