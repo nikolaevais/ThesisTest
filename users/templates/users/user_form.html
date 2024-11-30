@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="container">
+    <form class="row" method="post">
+        <div class="col-sm-7 col-md-5 col-lg-4 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <hr class="my-4">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
