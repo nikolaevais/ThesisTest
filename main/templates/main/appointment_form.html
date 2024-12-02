@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="container class_form">
+    <h3 class="card-title">
+        Записаться к врачу или на медицинскую услугу
+    </h3>
+    <div class="row justify-content-center">
+        {% if step_1 %}
+        <form action="{% url 'main:create_appointment' %}" method="GET" style="width: 50%;">
+            <label for="service">Выберите медицинскую услугу</label>
+            <select name="servise" id="service">
+                {% for servis in servises %}
+                <option value="{{ servis.id }}">{{ servis.title }}</option>
+                {% endfor %}
+            </select>
+            <div style="float: right;" class="form-group row">
+                <button type="submit" class="btn btn-success">Далее</button>
+            </div>
+        </form>
+        {% endif %}
+
+        {% if step_2 %}
+        <form action="{% url 'main:finalize_appointment' %}" method="GET" style="width: 50%;">
+            <label for="doctor">Выберите врача</label>
+            <select name="doctor" id="doctor">
+                {% for doc in doctors %}
+                <option value="{{ doc.id }}">{{ doc }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="date">Выберите дату</label>
+            <input type="date" name="date" min="{{ min_day_value }}" max="{{ max_day_value }}" required>
+
+            <label for="time">Выберите время</label>
+            <select name="time" id="time">
+                {% for time in all_time %}
+                <option value="{{ time }}">{{ time }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="hidden" name="servise" value="{{ selected_service_id }}">
+
+            <div style="float: right;" class="form-group row">
+                <button type="submit" class="btn btn-success">Записаться</button>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

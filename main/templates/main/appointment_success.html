@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Успешная запись</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Вы успешно записаны на прием!</h1>
+        <p>Ваши данные о записи:</p>
+        <ul>
+            <li>Врач: {{ appointment.doctor }}</li>
+            <li>Услуга: {{ appointment.services }}</li>
+            <li>Дата: {{ appointment.date }}</li>
+            <li>Время: {{ appointment.time }}</li>
+        </ul>
+        <a href="{% url 'main:create_appointment' %}">Записаться на новый прием</a>
+    </div>
+</body>
+
+{% endblock %}

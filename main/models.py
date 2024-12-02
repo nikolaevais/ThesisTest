@@ -34,4 +34,18 @@ class Services(models.Model):
         verbose_name_plural = "Услуги"
 
     def __str__(self):
-        return f"{self.title} {self.doctor} {self.price}"
+        return f"{self.title} {self.price}"
+
+
+class Appointment(models.Model):
+    services = models.ForeignKey(Services, on_delete=models.CASCADE, verbose_name="Услуги")
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, verbose_name="Доктор")
+    date = models.DateField(verbose_name="Дата")
+    time = models.TimeField(verbose_name="Время")
+
+    class Meta:
+        verbose_name = "Запись"
+        verbose_name_plural = "Записи"
+
+    def __str__(self):
+        return f"{self.services} {self.date} {self.time}"
