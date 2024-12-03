@@ -1,6 +1,8 @@
+import random
+
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from datetime import datetime, timedelta
 
@@ -9,7 +11,17 @@ from main.models import Doctor, Services, Appointment
 
 
 def index(request):
-    return render(request, 'main/index.html')
+
+    service = Services.objects.all()
+    if len(service) >= 3:
+        random_service = random.sample(list(service), 3)
+    else:
+        random_service = service
+
+    context = {
+        'random_service': random_service
+    }
+    return render(request, 'main/index.html', context)
 
 
 def contact(request):
@@ -18,6 +30,18 @@ def contact(request):
         phone = request.POST.get('phone')
 
     return render(request, 'main/contact.html')
+
+
+def mission(request):
+    return render(request, 'main/mission.html')
+
+
+def history(request):
+    return render(request, 'main/history.html')
+
+
+class HistoryAppointmentView(TemplateView):
+    template_name = 'main/history_appointment.html'
 
 
 def first_page(request):
@@ -132,12 +156,7 @@ class ServicesDeleteView(DeleteView):
     model = Services
     success_url = reverse_lazy('main:services_list')
 
-# class AppointmentCreateView(CreateView):
-#     model = Appointment
-#     form_class = AppointmentForm
-#     success_url = reverse_lazy('main:index')
-#
-#
+
 # class AppointmentListView(ListView):
 #     model = Appointment
 #

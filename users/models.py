@@ -24,3 +24,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    def get_display_name(self):
+        return self.email

@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<ul class="nav flex-column">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'main:create_appointment' %}">Записаться на приём</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Результаты диагностики</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'main:history_appointment' %}">История записей</a>
+    </li>
+</ul>
+
+{% endblock %}

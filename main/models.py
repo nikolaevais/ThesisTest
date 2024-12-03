@@ -42,6 +42,10 @@ class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, verbose_name="Доктор")
     date = models.DateField(verbose_name="Дата")
     time = models.TimeField(verbose_name="Время")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE,
+                             verbose_name="Создатель записи",
+                             **NULLABLE)
 
     class Meta:
         verbose_name = "Запись"
@@ -49,3 +53,15 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"{self.services} {self.date} {self.time}"
+
+
+class Info(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название")
+    description = models.TextField(verbose_name='Описание')
+
+    class Meta:
+        verbose_name = "Информация"
+        verbose_name_plural = "Информации"
+
+    def __str__(self):
+        return f"{self.title} {self.description}"
