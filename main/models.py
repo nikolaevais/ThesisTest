@@ -24,7 +24,7 @@ class Doctor(models.Model):
 
 class Services(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название")
-    description = models.TextField(verbose_name='Тело письма')
+    description = models.TextField(verbose_name='Описание')
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, verbose_name="Доктор")
     price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="Цена")
     photo = models.ImageField(upload_to="main/services/photo/", verbose_name="Фото", **NULLABLE)

@@ -187,14 +187,10 @@
 {% block content %}
 {% endblock %}
 
-
-<!-- FOOTER -->
-<footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; {% now 'Y' %}
+<footer class="text-body-secondary py-5">
+  <div class="container">
+    <p class="mb-1">&copy; {% now 'Y' %}, Медицинский центр "Здоровье"</p>
+  </div>
 </footer>
-</main>
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-</body>
-</html>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

@@ -7,18 +7,15 @@
         <div class="col">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col-auto d-none d-lg-block">
-                    <img src="{{ services.photo | media_filter }}" class="img-fluid" style="height: 100px;" alt="Изображение с корректированной высотой">
+                    <img src="{{ services.photo | media_filter }}" class="img-fluid" style="height: 100px;"
+                         alt="Изображение с корректированной высотой">
                 </div>
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h3 class="mb-auto">{{ services.title }}</h3>
+                    <h3 class="d-inline-block mb-2">{{ services.title }}</h3>
                     <p class="fw-bold">Стоимость услуги: {{ services.price }} ₽</p>
                     <p class="card-text mb-auto">{{ services.description }}</p>
-                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                        Continue reading
-                        <svg class="bi">
-                            <use xlink:href="#chevron-right"/>
-                        </svg>
-                    </a>
+                    <a href="{% url 'main:services_list' %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                        Назад</a>
                 </div>
             </div>
         </div>

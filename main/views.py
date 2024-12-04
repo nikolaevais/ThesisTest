@@ -6,7 +6,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from datetime import datetime, timedelta
 
-from main.forms import AppointmentForm
 from main.models import Doctor, Services, Appointment
 
 
@@ -38,6 +37,10 @@ def mission(request):
 
 def history(request):
     return render(request, 'main/history.html')
+
+
+def error(request):
+    return render(request, 'main/error.html')
 
 
 class HistoryAppointmentView(TemplateView):
@@ -97,7 +100,8 @@ def finalize_appointment(request):
             doctor=doctor,
             services=service,
             date=selected_date,
-            time=selected_time
+            time=selected_time,
+            user=request.user
         )
 
         # Передача информации о записи в шаблон

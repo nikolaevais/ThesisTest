@@ -7,20 +7,17 @@
         <div class="col">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h3 class="mb-0">{{ doctor.last_name}} {{ doctor.first_name}} {{ doctor.surname }}</h3>
-                    <h5 class="mb-0">{{ doctor.job_title }}</h5>
-                    <div class="mb-1 text-body-secondary"> Стаж работы {{ doctor.experience }} лет</div>
+                    <h3 class="mb-2">{{ doctor.last_name}} {{ doctor.first_name}} {{ doctor.surname }}</h3>
+                    <h5 class="mb-2">{{ doctor.job_title }}</h5>
+                    <div class="mb-2 text-body-secondary"> Стаж работы {{ doctor.experience }} лет</div>
                     <p class="card-text mb-auto">{{ doctor.education }}</p>
-                    <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                        Continue reading
-                        <svg class="bi">
-                            <use xlink:href="#chevron-right"/>
-                        </svg>
-                    </a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
-                    <img src="{{ doctor.avatar | media_filter }}" class="img-fluid" style="height: 500px;" alt="...">
+                    <img src="{{ doctor.avatar | media_filter }}" class="img-fluid" style="height: 500px;"
+                         alt="...">
                 </div>
+                <a href="{% url 'main:doctor_list' %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                    Назад</a>
             </div>
         </div>
     </div>
