@@ -1,6 +1,6 @@
 import random
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import (
     ListView,
@@ -146,6 +146,7 @@ class DoctorCreateView(CreateView):
         "job_title",
     )
     success_url = reverse_lazy("main:doctor_list")
+    template_name = "main/doctor_forms.html"
 
 
 class DoctorListView(ListView):
@@ -178,7 +179,7 @@ class DoctorDeleteView(DeleteView):
 
 class ServicesCreateView(CreateView):
     model = Services
-    fields = ("title", "description", "surname", "doctor", "price", "photo")
+    fields = ("title", "description", "doctor", "price", "photo")
     success_url = reverse_lazy("main:services_list")
 
 
