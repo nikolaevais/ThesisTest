@@ -67,15 +67,15 @@
 </div>
 
 <div class="container marketing">
-    <h3 class="card-text">В медицинском центре "Здоровье" представлен большой выбор услуг. Выберите
-        интересующее</h3>
+    <h4 class="card-text">В нашем медицинском центре "Здоровье" представлен большой выбор услуг. Выберите
+        интересующее</h4>
     <p><a href="{% url 'main:services_list' %}"
-          class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover position-absolute end-20">Все
+          class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover position-absolute end-0">Все
         услуги ></a></p>
     <div class="row">
         {% for service in random_service %}
         <div class="col-lg-4">
-            <img src="{{ services.photo | media_filter }}" class="rounded-circle float-left" alt="...">
+            <img src="{{ service.photo | media_filter }}" class="img-thumbnail" alt="...">
             <h2 class="fw-normal">{{ services.title }}</h2>
             <p>{{ services.description|truncatechars:100 }}</p>
             <p><a class="btn btn-secondary" href="{% url 'main:services_detail' service.pk %}">Смотреть &raquo;</a>
@@ -93,7 +93,7 @@
                 <p class="fw-light">Адрес</p>
                 <a href="https://yandex.ru/maps/977/republic-of-crimea/house/krymskaya_ulitsa_5/Z00YfgRhS0IAQFpufXV2cnxlYg==/?ll=34.833037%2C44.973322&origin=jsapi&z=18"
                    class="text-decoration-none">Республика Крым, Белогорский район, село Земляничное, улица
-                    Крымская улица, 5 </a>
+                    Крымская, 5 </a>
 
                 <p class="fw-light">Режим работы</p>
                 <p class="text-wrap lh-sm">Понедельник-пятница с 08:00 до 19:00<br/>
