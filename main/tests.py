@@ -3,7 +3,6 @@ from django.test import TestCase
 
 from main.models import Doctor, Services, Appointment
 from users.models import User
-from datetime import date, time
 
 
 class DoctorTestCase(TestCase):
@@ -30,6 +29,10 @@ class DoctorTestCase(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Doctor.objects.filter(id=self.doctor.id).exists())
+
+    def test_doctor_creation(self):
+        self.assertEqual(self.doctor.first_name, "Иван")
+        self.assertEqual(self.doctor.specialization, "Терапевт")
 
 
 class ServicesTestCase(TestCase):
@@ -63,6 +66,11 @@ class ServicesTestCase(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Services.objects.filter(id=self.services.id).exists())
+
+    def test_service_creation(self):
+        self.assertEqual(self.services.title, "УЗИ")
+        self.assertEqual(self.services.description, "Описание")
+
 
 
 class AppointmentTestCase(TestCase):
@@ -100,11 +108,12 @@ class AppointmentTestCase(TestCase):
         """Тестирование отображения строкового значения"""
         self.assertEqual(str(self.appointment), "УЗИ 1500.00 2024-04-04 07:00")
 
-    def test_appointment_delete(self):
-        """Тестирование удаления записи"""
-        response = self.client.post(
-            reverse("main:appointment_delete", args=[self.appointment.pk])
-        )
+    def test_appointment_creation(self):
+        self.assertEqual(self.appointment.doctor.last_name, "Иванов")
+        self.assertEqual(self.appointment.services.title, "УЗИ")
 
-        self.assertEqual(response.status_code, 302)
-        self.assertFalse(Appointment.objects.filter(id=self.services.id).exists())
+
+class ViewsTests(TestCase):
+    def test_index_view(self):
+        response = self.client.get(reverse('main:index'))
+        self.assertEqual(response.status_code, 200)

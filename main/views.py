@@ -146,7 +146,6 @@ class DoctorCreateView(CreateView):
         "job_title",
     )
     success_url = reverse_lazy("main:doctor_list")
-    template_name = "main/doctor_forms.html"
 
 
 class DoctorListView(ListView):
@@ -216,12 +215,12 @@ class AppointmentDetailView(DetailView):
 class AppointmentUpdateView(UpdateView):
     model = Appointment
     fields = ("services", "doctor", "date", "time")
-    success_url = reverse_lazy("main:services_list")
+    success_url = reverse_lazy("main:appointment_list")
 
     def get_success_url(self):
-        return reverse("main:services_list", args=[self.kwargs.get("pk")])
+        return reverse("main:appointment_list", args=[self.kwargs.get("pk")])
 
 
 class AppointmentDeleteView(DeleteView):
     model = Appointment
-    success_url = reverse_lazy("main:services_list")
+    success_url = reverse_lazy("main:appointment_list")

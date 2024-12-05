@@ -1,6 +1,8 @@
 from django.urls import reverse
 from django.test import TestCase
 
+from users.forms import UserRegisterForm
+
 
 class UserTest(TestCase):
     def setUp(self):
@@ -14,6 +16,7 @@ class UserTest(TestCase):
         response = self.client.post(reverse("users:register"), self.user)
 
         self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(response.context['form'], UserRegisterForm)
 
     def test_user_registration_without_email(self):
         """Тест регистрации без указания email."""
