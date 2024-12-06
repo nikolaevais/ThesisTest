@@ -14,7 +14,7 @@ from main.views import (
     finalize_appointment,
     HistoryAppointmentView,
     DoctorCreateView,
-    DoctorDeleteView, ServicesCreateView, ServicesDeleteView, AppointmentDeleteView,
+    DoctorDeleteView, ServicesCreateView, ServicesDeleteView, AppointmentDeleteView, ResultView,
 )
 
 app_name = MainConfig.name
@@ -24,6 +24,7 @@ urlpatterns = [
     path("contact/", contact, name="contact"),
     path("mission/", mission, name="mission"),
     path("history/", history, name="history"),
+    path("result/", ResultView.as_view(), name="result"),
     path("doctor/list", DoctorListView.as_view(), name="doctor_list"),
     path("doctor/create/", DoctorCreateView.as_view(), name="doctor_create"),
     path("doctor/view/<int:pk>/", DoctorDetailView.as_view(), name="doctor_detail"),

@@ -52,6 +52,10 @@ class HistoryAppointmentView(TemplateView):
     template_name = "main/history_appointment.html"
 
 
+class ResultView(TemplateView):
+    template_name = "main/result.html"
+
+
 def first_page(request):
     all_time = [
         "08:00",
