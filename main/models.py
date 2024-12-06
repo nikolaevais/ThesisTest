@@ -75,3 +75,21 @@ class Info(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.description}"
+
+
+class Results(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название")
+    description = models.TextField(verbose_name="Описание")
+    pacient = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Пациент",
+        **NULLABLE,
+    )
+
+    class Meta:
+        verbose_name = "Результат"
+        verbose_name_plural = "Результаты"
+
+    def __str__(self):
+        return f"{self.title} {self.description}"
